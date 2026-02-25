@@ -232,7 +232,7 @@ async function fastSerialize(
 ): Promise<unknown | undefined> {
   const tmpFile = path.join(
     os.tmpdir(),
-    `debug-replay-${Date.now()}-${Math.random().toString(36).slice(2)}.json`
+    `data-snapshot-${Date.now()}-${Math.random().toString(36).slice(2)}.json`
   );
   const escapedPath = JSON.stringify(tmpFile);
 
@@ -284,7 +284,7 @@ function withTimeout<T>(
         () =>
           reject(
             new Error(
-              `Debug Replay: Timed out waiting for ${label}. Is the debugger paused at a breakpoint?`
+              `Data Snapshot: Timed out waiting for ${label}. Is the debugger paused at a breakpoint?`
             )
           ),
         ms
@@ -303,7 +303,7 @@ export async function captureVariable(
 ): Promise<{ snapshotPath: string; snapshot: Snapshot } | undefined> {
   const session = vscode.debug.activeDebugSession;
   if (!session) {
-    vscode.window.showErrorMessage("Debug Replay: No active debug session.");
+    vscode.window.showErrorMessage("Data Snapshot: No active debug session.");
     return undefined;
   }
 
@@ -311,14 +311,14 @@ export async function captureVariable(
   const expression = editor?.document.getText(editor.selection).trim();
   if (!expression) {
     vscode.window.showErrorMessage(
-      "Debug Replay: Select a variable or expression in the editor first."
+      "Data Snapshot: Select a variable or expression in the editor first."
     );
     return undefined;
   }
 
   if (/^[\[{]/.test(expression) || expression.includes("\n")) {
     vscode.window.showErrorMessage(
-      `Debug Replay: "${expression}" is not a valid expression. ` +
+      `Data Snapshot: "${expression}" is not a valid expression. ` +
         `Select a single variable name or property access (e.g. "listings" or "order.items").`
     );
     return undefined;
@@ -327,12 +327,12 @@ export async function captureVariable(
   return vscode.window.withProgress(
     {
       location: vscode.ProgressLocation.Notification,
-      title: `Debug Replay: Capturing "${expression}"`,
+      title: `Data Snapshot: Capturing "${expression}"`,
       cancellable: true,
     },
     async (progress, token) => {
       const maxDepth: number = vscode.workspace
-        .getConfiguration("debug-replay")
+        .getConfiguration("data-snapshot")
         .get("maxDepth", 5);
 
       const counter = new SerializeCounter(progress);
@@ -349,14 +349,14 @@ export async function captureVariable(
         );
       } catch (e: any) {
         vscode.window.showErrorMessage(
-          e.message ?? "Debug Replay: Failed to get threads."
+          e.message ?? "Data Snapshot: Failed to get threads."
         );
         return undefined;
       }
 
       const threads: DapThread[] = threadsResp?.threads ?? [];
       if (threads.length === 0) {
-        vscode.window.showErrorMessage("Debug Replay: No threads found.");
+        vscode.window.showErrorMessage("Data Snapshot: No threads found.");
         return undefined;
       }
 
@@ -369,7 +369,7 @@ export async function captureVariable(
         );
       } catch (e: any) {
         vscode.window.showErrorMessage(
-          e.message ?? "Debug Replay: Failed to get stack trace."
+          e.message ?? "Data Snapshot: Failed to get stack trace."
         );
         return undefined;
       }
@@ -377,7 +377,7 @@ export async function captureVariable(
       const frames: DapStackFrame[] = stackResp?.stackFrames ?? [];
       if (frames.length === 0) {
         vscode.window.showErrorMessage(
-          "Debug Replay: No stack frames — is the debugger paused at a breakpoint?"
+          "Data Snapshot: No stack frames — is the debugger paused at a breakpoint?"
         );
         return undefined;
       }
@@ -415,9 +415,9 @@ export async function captureVariable(
           );
         } catch (e: any) {
           vscode.window.showErrorMessage(
-            e.message?.startsWith("Debug Replay:")
+            e.message?.startsWith("Data Snapshot:")
               ? e.message
-              : `Debug Replay: Could not evaluate "${expression}". ` +
+              : `Data Snapshot: Could not evaluate "${expression}". ` +
                   `Make sure the debugger is paused and the variable is in scope.`
           );
           return undefined;

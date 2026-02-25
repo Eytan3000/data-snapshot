@@ -8,11 +8,11 @@ import type { Snapshot } from "./snapshotCapture";
 // logic is immune to the formatter breaking the stub across multiple lines.
 //
 // Inserted block looks like:
-//   // debug-replay-stub-start: <original trimmed line>
+//   // data-snapshot-stub-start: <original trimmed line>
 //   const result = require("...").variables["result"];
-//   // debug-replay-stub-end
-const MARKER_START = "// debug-replay-stub-start:";
-const MARKER_END = "// debug-replay-stub-end";
+//   // data-snapshot-stub-end
+const MARKER_START = "// data-snapshot-stub-start:";
+const MARKER_END = "// data-snapshot-stub-end";
 
 /**
  * Replaces the assignment line for the captured variable in the source file
@@ -28,7 +28,7 @@ export async function applyInlineStub(
   const variableNames = Object.keys(snapshot.variables);
   if (variableNames.length !== 1) {
     vscode.window.showErrorMessage(
-      "Debug Replay: Inline stub requires exactly one captured variable."
+      "Data Snapshot: Inline stub requires exactly one captured variable."
     );
     return false;
   }
@@ -38,7 +38,7 @@ export async function applyInlineStub(
 
   if (!filePath || !fs.existsSync(filePath)) {
     vscode.window.showErrorMessage(
-      `Debug Replay: Source file not found: ${filePath}`
+      `Data Snapshot: Source file not found: ${filePath}`
     );
     return false;
   }
@@ -59,7 +59,7 @@ export async function applyInlineStub(
 
   if (candidates.length === 0) {
     vscode.window.showErrorMessage(
-      `Debug Replay: No declaration of "${varName}" found in ${path.basename(filePath)}.`
+      `Data Snapshot: No declaration of "${varName}" found in ${path.basename(filePath)}.`
     );
     return false;
   }

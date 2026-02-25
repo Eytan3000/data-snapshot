@@ -1,6 +1,6 @@
 {
-  "name": "debug-replay",
-  "displayName": "Debug Replay",
+  "name": "data-snapshot",
+  "displayName": "Data Snapshot",
   "publisher": "EytanKrief",
   "description": "Capture debug snapshots and generate TypeScript replay harnesses",
   "version": "0.0.1",
@@ -18,75 +18,75 @@
   "contributes": {
     "commands": [
       {
-        "command": "debug-replay.captureVariable",
-        "title": "Capture Selected Variable",
+        "command": "data-snapshot.captureVariable",
+        "title": "Data Snapshot: Capture Selected Variable",
         "icon": "$(add)"
       },
       {
-        "command": "debug-replay.listSnapshots",
-        "title": "List Snapshots"
+        "command": "data-snapshot.listSnapshots",
+        "title": "Data Snapshot: List Snapshots"
       },
       {
-        "command": "debug-replay.deleteSnapshot",
-        "title": "Delete Snapshot"
+        "command": "data-snapshot.deleteSnapshot",
+        "title": "Data Snapshot: Delete Snapshot"
       },
       {
-        "command": "debug-replay.deleteAll",
-        "title": "Delete All Snapshots"
+        "command": "data-snapshot.deleteAll",
+        "title": "Data Snapshot: Delete All Snapshots"
       },
       {
-        "command": "debug-replay.removeStubs",
-        "title": "Debug Replay: Remove All Stubs"
+        "command": "data-snapshot.removeStubs",
+        "title": "Data Snapshot: Remove All Stubs"
       }
     ],
     "menus": {
       "debug/toolBar": [
         {
-          "command": "debug-replay.captureVariable",
+          "command": "data-snapshot.captureVariable",
           "when": "inDebugMode"
         }
       ],
       "editor/context": [
         {
-          "command": "debug-replay.captureVariable",
+          "command": "data-snapshot.captureVariable",
           "when": "inDebugMode && editorHasSelection",
           "group": "debug"
         }
       ],
       "view/item/context": [
         {
-          "command": "debug-replay.deleteSnapshot",
-          "when": "view == debug-replay.snapshotsView && viewItem == snapshot"
+          "command": "data-snapshot.deleteSnapshot",
+          "when": "view == data-snapshot.snapshotsView && viewItem == snapshot"
         }
       ],
       "view/title": [
         {
-          "command": "debug-replay.deleteAll",
-          "when": "view == debug-replay.snapshotsView"
+          "command": "data-snapshot.deleteAll",
+          "when": "view == data-snapshot.snapshotsView"
         }
       ]
     },
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "debug-replay",
-          "title": "Debug Replay",
+          "id": "data-snapshot",
+          "title": "Data Snapshot",
           "icon": "$(history)"
         }
       ]
     },
     "views": {
-      "debug-replay": [
+      "data-snapshot": [
         {
-          "id": "debug-replay.snapshotsView",
+          "id": "data-snapshot.snapshotsView",
           "name": "Snapshots"
         }
       ]
     },
     "configuration": {
-      "title": "Debug Replay",
+      "title": "Data Snapshot",
       "properties": {
-        "debug-replay.maxDepth": {
+        "data-snapshot.maxDepth": {
           "type": "number",
           "default": 5,
           "description": "Maximum recursion depth when serializing nested variables"

@@ -10,13 +10,13 @@ export function activate(context: vscode.ExtensionContext): void {
 
   const treeProvider = new SnapshotTreeProvider(workspaceRoot);
 
-  const treeView = vscode.window.createTreeView("debug-replay.snapshotsView", {
+  const treeView = vscode.window.createTreeView("data-snapshot.snapshotsView", {
     treeDataProvider: treeProvider,
     showCollapseAll: false,
   });
 
   const captureVarCmd = vscode.commands.registerCommand(
-    "debug-replay.captureVariable",
+    "data-snapshot.captureVariable",
     async () => {
       const result = await captureVariable(workspaceRoot);
       if (!result) return;
@@ -29,39 +29,39 @@ export function activate(context: vscode.ExtensionContext): void {
       );
       if (applied) {
         vscode.window.showInformationMessage(
-          'Debug Replay: Stub applied. Run "Remove All Stubs" to revert.'
+          'Data Snapshot: Stub applied. Run "Remove All Stubs" to revert.'
         );
       }
     }
   );
 
   const removeStubsCmd = vscode.commands.registerCommand(
-    "debug-replay.removeStubs",
+    "data-snapshot.removeStubs",
     async () => {
       await removeAllInlineStubs(workspaceRoot);
       vscode.window.showInformationMessage(
-        "Debug Replay: All stubs removed. Functions will run normally again."
+        "Data Snapshot: All stubs removed. Functions will run normally again."
       );
     }
   );
 
   const listCmd = vscode.commands.registerCommand(
-    "debug-replay.listSnapshots",
+    "data-snapshot.listSnapshots",
     () => treeView.reveal(undefined as unknown as SnapshotItem, { focus: true })
   );
 
   const openSnapshotCmd = vscode.commands.registerCommand(
-    "debug-replay.openSnapshot",
+    "data-snapshot.openSnapshot",
     (item: SnapshotItem) => treeProvider.openSnapshot(item)
   );
 
   const deleteSnapshotCmd = vscode.commands.registerCommand(
-    "debug-replay.deleteSnapshot",
+    "data-snapshot.deleteSnapshot",
     (item: SnapshotItem) => treeProvider.deleteSnapshot(item)
   );
 
   const deleteAllCmd = vscode.commands.registerCommand(
-    "debug-replay.deleteAll",
+    "data-snapshot.deleteAll",
     () => treeProvider.deleteAll()
   );
 

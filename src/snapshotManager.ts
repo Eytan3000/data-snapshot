@@ -25,7 +25,7 @@ export class SnapshotItem extends vscode.TreeItem {
 
     // Single-click opens the JSON snapshot
     this.command = {
-      command: "debug-replay.openSnapshot",
+      command: "data-snapshot.openSnapshot",
       title: "Open Snapshot",
       arguments: [this],
     };
