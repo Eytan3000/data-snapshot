@@ -2,8 +2,14 @@
   "name": "data-snapshot",
   "displayName": "Data Snapshot",
   "publisher": "EytanKrief",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eytan3000/data-snapshot"
+  },
   "description": "Capture debug snapshots and generate TypeScript replay harnesses",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.85.0"
   },
