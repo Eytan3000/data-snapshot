@@ -35,20 +35,27 @@ Capture debug snapshots and generate TypeScript replay harnesses. While paused i
 
 ### Configuration
 
-| Setting                 | Type   | Default | Description                                                               |
-| ----------------------- | ------ | ------- | ------------------------------------------------------------------------- |
+| Setting                  | Type   | Default | Description                                                               |
+| ------------------------ | ------ | ------- | ------------------------------------------------------------------------- |
 | `data-snapshot.maxDepth` | number | `5`     | Maximum recursion depth when serializing nested variables (DAP fallback). |
 
 ## Commands
 
-| Command                              | Description                                            |
-| ------------------------------------ | ------------------------------------------------------ |
+| Command                                  | Description                                            |
+| ---------------------------------------- | ------------------------------------------------------ |
 | Data Snapshot: Capture Selected Variable | Capture the selected expression (debug only).          |
-| Data Snapshot: List Snapshots        | Focus the Snapshots view.                              |
-| Data Snapshot: Delete Snapshot       | Delete the snapshot (from view context menu).          |
-| Data Snapshot: Delete All Snapshots  | Delete every snapshot (from view title menu).          |
-| Data Snapshot: Remove All Stubs      | Revert all inline stubs in `src/**/*.{ts,tsx,js,jsx}`. |
+| Data Snapshot: List Snapshots            | Focus the Snapshots view.                              |
+| Data Snapshot: Delete Snapshot           | Delete the snapshot (from view context menu).          |
+| Data Snapshot: Delete All Snapshots      | Delete every snapshot (from view title menu).          |
+| Data Snapshot: Remove All Stubs          | Revert all inline stubs in `src/**/*.{ts,tsx,js,jsx}`. |
 
 ## Activation
 
 The extension activates when you start a debug session (`onDebug`). Commands that capture or list snapshots are available when the debugger is active and paused as needed.
+
+## publishing:
+
+'''
+npm run compile
+npx ovsx publish -p YOUR_ACCESS_TOKEN
+'''

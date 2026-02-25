@@ -8,7 +8,7 @@
     "url": "https://github.com/Eytan3000/data-snapshot"
   },
   "description": "Capture debug snapshots and generate TypeScript replay harnesses",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.85.0"
