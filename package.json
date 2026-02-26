@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/Eytan3000/data-snapshot"
   },
-  "description": "Capture debug snapshots and generate TypeScript replay harnesses",
+  "description": "Capture variable snapshots while debugging and stub them inline to skip slow operations on re-run",
   "version": "0.0.5",
   "icon": "images/icon.png",
   "engines": {
