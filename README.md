@@ -52,10 +52,3 @@ Capture debug snapshots and generate TypeScript replay harnesses. While paused i
 ## Activation
 
 The extension activates when you start a debug session (`onDebug`). Commands that capture or list snapshots are available when the debugger is active and paused as needed.
-
-## publishing:
-
-'''
-npm run compile
-npx ovsx publish -p YOUR_ACCESS_TOKEN
-'''
