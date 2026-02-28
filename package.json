@@ -26,7 +26,10 @@
       {
         "command": "data-snapshot.captureVariable",
         "title": "Data Snapshot: Capture Selected Variable",
-        "icon": "$(add)"
+        "icon": {
+          "light": "images/capture-icon.png",
+          "dark": "images/capture-icon.png"
+        }
       },
       {
         "command": "data-snapshot.deleteSnapshot",
