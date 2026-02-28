@@ -45,11 +45,6 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   );
 
-  const listCmd = vscode.commands.registerCommand(
-    "data-snapshot.listSnapshots",
-    () => treeView.reveal(undefined as unknown as SnapshotItem, { focus: true })
-  );
-
   const openSnapshotCmd = vscode.commands.registerCommand(
     "data-snapshot.openSnapshot",
     (item: SnapshotItem) => treeProvider.openSnapshot(item)
@@ -69,7 +64,6 @@ export function activate(context: vscode.ExtensionContext): void {
     treeView,
     captureVarCmd,
     removeStubsCmd,
-    listCmd,
     openSnapshotCmd,
     deleteSnapshotCmd,
     deleteAllCmd

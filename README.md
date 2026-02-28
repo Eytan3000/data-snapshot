@@ -20,7 +20,6 @@ Capture debug snapshots of variable values while paused in the debugger, and opt
 ### Snapshots view
 
 - **Location:** Activity bar → **Data Snapshot** → **Snapshots**.
-- **Data Snapshot: List Snapshots:** Command to focus the Snapshots view.
 - **List:** All `.json` snapshots in `.snapshots/snapshots/`, newest first.
 - **Open:** Click a snapshot to open its JSON file in the editor.
 - **Delete:** Right‑click a snapshot → **Data Snapshot: Delete Snapshot**.
@@ -44,7 +43,6 @@ Capture debug snapshots of variable values while paused in the debugger, and opt
 | Command                                  | Description                                            |
 | ---------------------------------------- | ------------------------------------------------------ |
 | Data Snapshot: Capture Selected Variable | Capture the selected expression (debug only).          |
-| Data Snapshot: List Snapshots            | Focus the Snapshots view.                              |
 | Data Snapshot: Delete Snapshot           | Delete the snapshot (from view context menu).          |
 | Data Snapshot: Delete All Snapshots      | Delete every snapshot (from view title menu).          |
 | Data Snapshot: Remove All Stubs          | Revert all inline stubs in `src/**/*.{ts,tsx,js,jsx}`. |

@@ -29,10 +29,6 @@
         "icon": "$(add)"
       },
       {
-        "command": "data-snapshot.listSnapshots",
-        "title": "Data Snapshot: List Snapshots"
-      },
-      {
         "command": "data-snapshot.deleteSnapshot",
         "title": "Data Snapshot: Delete Snapshot"
       },
