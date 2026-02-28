@@ -2,6 +2,8 @@
 
 Capture debug snapshots of variable values while paused in the debugger, and optionally stub them inline in source so you can run without re-executing slow operations.
 
+![Data Snapshot: capture variable and apply stub](images/readme-example.gif)
+
 ## Features
 
 ### Capture variable snapshot
